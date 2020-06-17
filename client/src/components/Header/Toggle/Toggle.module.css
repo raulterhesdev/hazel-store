@@ -1,0 +1,36 @@
+.Toggle {
+  width: 30px;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 16px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.Toggle div {
+  width: 20px;
+  height: 3px;
+  background-color: var(--accent);
+  margin: 2px 0;
+  transition: all 0.4s linear;
+}
+
+.Close div:nth-child(1) {
+  transform: rotate(45deg) translateY(10px);
+}
+.Close div:nth-child(2) {
+  opacity: 0;
+  transform: scale(0) translateX(50px);
+}
+.Close div:nth-child(3) {
+  transform: rotate(-45deg) translateY(-10px);
+}
+
+@media (min-width: 800px) {
+  .Toggle {
+    display: none;
+  }
+}

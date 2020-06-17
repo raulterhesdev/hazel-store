@@ -1,0 +1,23 @@
+.Header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  width: 100vw;
+  background-color: var(--dark-bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.LinkContainer {
+  display: none;
+}
+
+@media (min-width: 800px) {
+  .LinkContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,26 @@
+.LinkContainer {
+  margin: 0;
+  padding: 0 8px;
+}
+.Link {
+  display: block;
+  color: var(--white);
+  padding: 18px 24px;
+  border-bottom: 2px solid var(--lighter-bg);
+  transition: all 0.3s ease-in;
+  font-size: 1.1rem;
+}
+
+.ActiveLink {
+  border-bottom: 2px solid var(--accent);
+  font-weight: bold;
+}
+
+@media (min-width: 800px) {
+  .LinkContainer {
+    padding: 0;
+  }
+  .ActiveLink {
+    font-weight: normal;
+  }
+}

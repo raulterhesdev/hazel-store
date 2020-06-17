@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+.Logo {
+  padding: 12px 24px;
+}
+
+.LogoText {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.7rem;
+  color: var(--white);
+}

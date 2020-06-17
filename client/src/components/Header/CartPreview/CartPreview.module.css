@@ -1,0 +1,19 @@
+.CartPreview {
+  color: var(--accent);
+  position: relative;
+  margin-right: 24px;
+}
+
+.Cart {
+  font-size: 1.2rem;
+}
+
+.CartContent {
+  position: absolute;
+  top: 28px;
+  right: 0;
+  width: 300px;
+  background-color: var(--lighter-bg);
+  padding: 24px;
+  color: var(--white);
+}

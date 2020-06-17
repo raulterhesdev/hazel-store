@@ -1,0 +1,71 @@
+.Navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: var(--dark-bg);
+  z-index: 100;
+  opacity: 0;
+  padding: 50px 0px;
+  max-width: 300px;
+}
+
+.Open {
+  width: 70%;
+  animation: slide-right 0.3s ease-in;
+  opacity: 1;
+}
+
+.Closed {
+  animation: slide-left 0.3s ease-in;
+}
+
+/* Close button */
+.Close {
+  color: var(--white);
+  padding: 12px 18px;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+@keyframes slide-right {
+  0% {
+    width: 0;
+    opacity: 0;
+    display: none;
+  }
+  5% {
+    display: block;
+  }
+  100% {
+    width: 70%;
+    opacity: 1;
+  }
+}
+@keyframes slide-left {
+  0% {
+    width: 70%;
+    opacity: 1;
+    display: block;
+  }
+  95% {
+    display: none;
+  }
+  100% {
+    width: 0;
+    opacity: 0;
+  }
+}
+
+@media (min-width: 800px) {
+  .Close {
+    display: none;
+  }
+  .Navbar {
+    display: none;
+  }
+}
