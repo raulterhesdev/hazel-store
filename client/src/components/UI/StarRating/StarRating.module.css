@@ -1,0 +1,12 @@
+.Empty {
+  color: var(--lighter-bg);
+}
+
+.Star {
+  color: var(--accent);
+}
+
+.Empty,
+.Star {
+  font-size: 1rem;
+}

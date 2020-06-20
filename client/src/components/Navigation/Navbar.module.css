@@ -35,29 +35,29 @@
 @keyframes slide-right {
   0% {
     width: 0;
-    opacity: 0;
     display: none;
+    transform: translateX(-300px);
   }
   5% {
     display: block;
   }
   100% {
     width: 70%;
-    opacity: 1;
+    transform: translateX(0);
   }
 }
 @keyframes slide-left {
   0% {
     width: 70%;
-    opacity: 1;
     display: block;
+    transform: translateX(0);
   }
   95% {
     display: none;
   }
   100% {
     width: 0;
-    opacity: 0;
+    transform: translateX(-300px);
   }
 }
 

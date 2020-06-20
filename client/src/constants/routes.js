@@ -9,9 +9,14 @@ export const routes = {
     name: 'Products',
     exact: true,
   },
+  cart: {
+    path: '/cart',
+    name: 'Cart',
+    exact: true,
+  },
   account: {
-    path: '/profile',
-    name: 'My Profile',
+    path: '/account',
+    name: 'Account',
     exact: true,
   },
 };

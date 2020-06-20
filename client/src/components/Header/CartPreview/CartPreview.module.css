@@ -1,11 +1,15 @@
 .CartPreview {
-  color: var(--accent);
+  color: var(--accent-dark);
   position: relative;
   margin-right: 24px;
 }
 
 .Cart {
   font-size: 1.2rem;
+}
+
+.Cart:hover {
+  color: var(--accent);
 }
 
 .CartContent {
