@@ -1,20 +1,25 @@
+/* .Navbar {
+  padding: 50px 0px;
+  max-width: 300px;
+  transform: translateX(0);
+} */
+
 .Navbar {
+  z-index: 100;
   position: fixed;
   top: 0;
   left: 0;
-  width: 0;
   height: 100%;
+  width: 70%;
   background-color: var(--dark-bg);
-  z-index: 100;
-  opacity: 0;
-  padding: 50px 0px;
+  padding: 50px 0;
   max-width: 300px;
+  transform: translateX(-100vw);
 }
 
 .Open {
-  width: 70%;
+  transform: translateX(0);
   animation: slide-right 0.3s ease-in;
-  opacity: 1;
 }
 
 .Closed {
@@ -34,30 +39,20 @@
 
 @keyframes slide-right {
   0% {
-    width: 0;
-    display: none;
-    transform: translateX(-300px);
+    transform: translateX(-100vw);
   }
-  5% {
-    display: block;
-  }
+
   100% {
-    width: 70%;
     transform: translateX(0);
   }
 }
 @keyframes slide-left {
   0% {
-    width: 70%;
-    display: block;
     transform: translateX(0);
   }
-  95% {
-    display: none;
-  }
+
   100% {
-    width: 0;
-    transform: translateX(-300px);
+    transform: translateX(-100vw);
   }
 }
 
