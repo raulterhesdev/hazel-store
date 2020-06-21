@@ -1,0 +1,12 @@
+.Button {
+  padding: 6px 14px;
+  background-color: rgba(0, 0, 0, 0);
+  color: var(--white);
+  transition: all 0.3s ease-in;
+  border-bottom: 1px solid var(--lighter-bg);
+  margin: 0 1px;
+}
+
+.Active {
+  border-bottom: 1px solid var(--white);
+}

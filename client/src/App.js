@@ -4,6 +4,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Navbar from './components/Navigation/Navbar';
 import Shop from './components/Shop/Shop';
+import Footer from './components/Footer/Footer';
 
 import { routes } from './constants/routes';
 
@@ -22,6 +23,7 @@ function App() {
         />
         <Redirect to={routes.home.path} />
       </Switch>
+      <Footer />
     </div>
   );
 }

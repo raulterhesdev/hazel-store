@@ -1,10 +1,11 @@
 .Button {
-  padding: 8px 18px;
+  padding: 14px 32px;
   background-color: var(--accent-dark);
   color: var(--white);
   transition: all 0.1s ease-in;
   cursor: pointer;
   border-radius: 3px;
+  font-size: 1.1rem;
 }
 
 .Button:hover {

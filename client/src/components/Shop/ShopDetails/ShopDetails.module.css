@@ -1,0 +1,86 @@
+.ShopDetails {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 40px 12px;
+}
+
+.Title {
+  grid-column: span 2;
+  font-size: 1.2rem;
+  border-bottom: 1px solid var(--lighter-bg);
+  margin-bottom: 12px;
+  padding: 0 20px 6px;
+  text-align: center;
+}
+
+.Image {
+  width: 100%;
+  max-width: 300px;
+}
+
+.Discount {
+  background-color: var(--accent-dark);
+  position: absolute;
+  top: 10px;
+  left: -40px;
+  padding: 4px 50px;
+  transform: rotate(-45deg);
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.Container {
+  grid-column: span 2;
+  margin: 0 auto;
+}
+
+.InformationContainer {
+  grid-column: span 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 6px 0 12px 0;
+}
+
+.PriceContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.InitialPrice del {
+  font-size: 0.9rem;
+  opacity: 0.6;
+}
+
+.Price {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--accent);
+}
+
+.RatingContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+}
+
+.Rating {
+  font-size: 0.9rem;
+  margin-left: 12px;
+}
+
+.TabBar {
+  margin-left: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.Content {
+  grid-column: span 2;
+  margin-top: 24px;
+}
+
+.DetailsContainer {
+  padding: 12px 4px;
+}

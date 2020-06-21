@@ -5,12 +5,15 @@ import classes from './Modal.module.css';
 
 import Backdrop from '../Backdrop/Backdrop';
 
-const Modal = ({ show, modalClosed, transparent, ...props }) => {
+const Modal = ({ show, modalClosed, transparent, fullScreen, ...props }) => {
+  const modalClasses = fullScreen
+    ? classes.Modal + ' ' + classes.Full
+    : classes.Modal;
   return (
     <React.Fragment>
-      <Backdrop show={show} clicked={modalClosed} transparent={transparent} />
+      <Backdrop show={show} onClick={modalClosed} transparent={transparent} />
       <div
-        className={classes.Modal}
+        className={modalClasses}
         style={{
           transform: show ? 'translateY(0)' : 'translateY(-100vh)',
           opacity: show ? '1' : '0',
