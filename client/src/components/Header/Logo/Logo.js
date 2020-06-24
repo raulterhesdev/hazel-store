@@ -12,7 +12,7 @@ function Logo() {
         style={{ transition: 'all 0.2s ease-out' }}
         className={classes.LogoText}
       >
-        Hazel Shop
+        Hazel BookShop
       </NavLink>
     </div>
   );

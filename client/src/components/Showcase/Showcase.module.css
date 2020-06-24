@@ -1,0 +1,99 @@
+.Showcase {
+  min-height: 90vh;
+  margin-bottom: 16px;
+}
+
+.Container {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 10vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.ShowcaseText {
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 35px;
+  max-width: 600px;
+  margin: 24px auto 0 auto;
+}
+
+.ShowcaseText q {
+  font-size: 1.6rem;
+}
+
+.ShowcaseText span {
+  margin-top: 12px;
+  display: block;
+  text-align: right;
+  font-size: 1.3rem;
+}
+
+.Button {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.Link {
+  position: relative;
+  padding: 16px 32px;
+  overflow: hidden;
+  transition: all 0.3s ease-in;
+  border-radius: 5px;
+  font-size: 1.4rem;
+  color: var(--white);
+  background-color: var(--accent-dark);
+  border-radius: 42px;
+}
+
+.Link:hover {
+  background-color: var(--accent);
+}
+
+.Art {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.Art img {
+  width: 100%;
+  max-width: 250px;
+  margin: 0 auto;
+}
+
+.Art a {
+  font-size: 0.5rem;
+  opacity: 0.3;
+  color: var(--white);
+  text-align: center;
+}
+
+@media (min-width: 800px) {
+  .Container {
+    grid-template-columns: 1fr 2fr;
+    margin: 20vh;
+  }
+  .Art img {
+    max-width: 100%;
+  }
+
+  .Button {
+    margin-top: 10vh;
+  }
+  .ShowcaseText q {
+    font-size: 2rem;
+  }
+
+  .ShowcaseText span {
+    margin-top: 12px;
+    font-size: 1.5rem;
+  }
+  .Link {
+    font-size: 1.5rem;
+  }
+}

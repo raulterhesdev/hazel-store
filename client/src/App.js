@@ -5,6 +5,7 @@ import Header from './components/Header/Header';
 import Navbar from './components/Navigation/Navbar';
 import Shop from './components/Shop/Shop';
 import Footer from './components/Footer/Footer';
+import Showcase from './components/Showcase/Showcase';
 
 import { routes } from './constants/routes';
 
@@ -16,6 +17,11 @@ function App() {
       <Header />
       <Navbar />
       <Switch>
+        <Route
+          path={routes.home.path}
+          exact={routes.home.exact}
+          component={Showcase}
+        />
         <Route
           path={routes.products.path}
           exact={routes.products.exact}

@@ -1,7 +1,7 @@
 .Footer {
-  margin-top: 25px;
   padding: 16px;
   background-color: var(--dark-bg);
+  z-index: 10;
 }
 
 .Footer p {

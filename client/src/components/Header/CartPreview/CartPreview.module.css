@@ -21,3 +21,9 @@
   padding: 24px;
   color: var(--white);
 }
+
+@media (min-width: 700px) {
+  .CartPreview {
+    margin-right: 36px;
+  }
+}
