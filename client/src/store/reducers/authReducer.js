@@ -1,5 +1,7 @@
+import { user } from '../../_dummyData/user';
+
 const initialState = {
-  auth: {},
+  user: { ...user },
 };
 
 export default (state = initialState, { type, payload }) => {

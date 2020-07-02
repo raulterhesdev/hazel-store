@@ -6,6 +6,8 @@ import Navbar from './components/Navigation/Navbar';
 import Shop from './components/Shop/Shop';
 import Footer from './components/Footer/Footer';
 import Showcase from './components/Showcase/Showcase';
+import Cart from './components/Cart/Cart';
+import Account from './components/Account/Account';
 
 import { routes } from './constants/routes';
 
@@ -26,6 +28,16 @@ function App() {
           path={routes.products.path}
           exact={routes.products.exact}
           component={Shop}
+        />
+        <Route
+          path={routes.cart.path}
+          exact={routes.cart.exact}
+          component={Cart}
+        />
+        <Route
+          path={routes.account.path}
+          exact={routes.account.exact}
+          component={Account}
         />
         <Redirect to={routes.home.path} />
       </Switch>

@@ -1,0 +1,28 @@
+.CartItem {
+  padding: 8px;
+  border-bottom: 1px solid var(--lighter-bg);
+}
+
+.Quantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Quantity p {
+  padding: 4px 6px;
+}
+
+.Quantity p:nth-child(1) {
+  font-size: 1.1rem;
+}
+
+.Price {
+  text-align: right;
+  padding: 0px 4px 6px 4px;
+}
+
+.Total {
+  text-align: center;
+  font-size: 1.1rem;
+}

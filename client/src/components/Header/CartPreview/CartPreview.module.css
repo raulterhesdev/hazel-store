@@ -14,9 +14,10 @@
 
 .CartContent {
   position: absolute;
-  top: 28px;
+  top: 32px;
   right: 0;
-  width: 300px;
+  width: 500px;
+  max-width: 90vw;
   background-color: var(--lighter-bg);
   padding: 24px;
   color: var(--white);

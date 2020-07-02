@@ -1,0 +1,33 @@
+.Cart {
+  padding-top: 15vh;
+  min-height: 100vh;
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-bottom: 32px;
+}
+
+.Container {
+  padding: 18px 32px;
+  width: 450px;
+  max-width: 98vw;
+}
+
+.Title {
+  font-size: 1.6rem;
+  text-align: center;
+  border-bottom: 2px solid var(--lighter-bg);
+  margin-bottom: 8px;
+}
+
+.TotalPrice {
+  font-size: 1.6rem;
+  margin-top: 12px;
+  text-align: center;
+}
+
+.ButtonContainer {
+  margin-top: 16px;
+}

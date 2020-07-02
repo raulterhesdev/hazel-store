@@ -10,6 +10,8 @@ import PrimaryButton from '../../UI/PrimaryButton/PrimaryButton';
 import Modal from '../../UI/Modal/Modal';
 import ShopDetails from '../ShopDetails/ShopDetails';
 
+import { addToCart } from '../../../store/actions/cartActions';
+
 export class ShopItem extends Component {
   static propTypes = {
     product: PropTypes.object,
@@ -21,6 +23,14 @@ export class ShopItem extends Component {
   toggleModal = () => {
     this.setState({
       showModal: !this.state.showModal,
+    });
+  };
+
+  addToCart = () => {
+    this.props.addToCart({
+      title: this.props.product.title,
+      _id: this.props.product._id,
+      price: this.props.product.price,
     });
   };
 
@@ -81,12 +91,7 @@ export class ShopItem extends Component {
             )}
           </div>
           <div className={classes.Button}>
-            <PrimaryButton
-              onClick={() => {
-                console.log('NOT Toggle Modal');
-              }}
-              title='Add to Cart'
-            />
+            <PrimaryButton onClick={this.addToCart} title='Add to Cart' />
           </div>
         </div>
       </Card>
@@ -96,6 +101,6 @@ export class ShopItem extends Component {
 
 const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = { addToCart };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShopItem);

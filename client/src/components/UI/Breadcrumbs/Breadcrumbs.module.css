@@ -1,0 +1,21 @@
+.Container {
+  margin-bottom: 16px;
+}
+
+.Crumb {
+  padding: 6px 12px;
+  margin: 5px;
+  border: 1px solid var(--lighter-bg);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+
+.Crumb:hover {
+  color: var(--accent-dark);
+}
+
+.Active {
+  color: var(--accent);
+  border: 1px solid var(--accent-dark);
+}

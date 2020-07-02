@@ -10,8 +10,12 @@ const Showcase = () => {
     <div className={classes.Showcase}>
       <div className={classes.Container}>
         <div className={classes.Art}>
-          <img src={require('../../assets/png.png')} />
-          <a href='https://pngtree.com/so/teacher' target='_blank'>
+          <img src={require('../../assets/png.png')} alt='' />
+          <a
+            href='https://pngtree.com/so/teacher'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
             teacher png from pngtree.com
           </a>
         </div>

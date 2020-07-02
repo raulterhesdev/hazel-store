@@ -25,6 +25,11 @@ const Modal = ({ show, modalClosed, transparent, fullScreen, ...props }) => {
   );
 };
 
-Modal.propTypes = {};
+Modal.propTypes = {
+  show: PropTypes.bool.isRequired,
+  modalClosed: PropTypes.func,
+  transparent: PropTypes.bool,
+  fullScreen: PropTypes.bool,
+};
 
 export default Modal;

@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import StarRating from '../../UI/StarRating/StarRating';
 import PrimaryButton from '../../UI/PrimaryButton/PrimaryButton';
 import TabButton from '../../UI/TabButton/TabButton';
+import Review from '../Review/Review';
 
 import classes from './ShopDetails.module.css';
 
-export default class ShopDetails extends Component {
+class ShopDetails extends Component {
   static propTypes = {
     product: PropTypes.object,
+    reviews: PropTypes.array,
   };
 
   state = {
@@ -26,6 +29,7 @@ export default class ShopDetails extends Component {
 
   render() {
     const {
+      _id,
       imageUrl,
       title,
       discount,
@@ -34,6 +38,10 @@ export default class ShopDetails extends Component {
       ratingCount,
       description,
     } = this.props.product;
+
+    const reviewData = this.props.reviews
+      .filter((review) => review.productId === _id)
+      .map((review) => <Review key={review._id} review={review} />);
     return (
       <div className={classes.ShopDetails}>
         {discount > 0 ? (
@@ -89,10 +97,18 @@ export default class ShopDetails extends Component {
               <p className={classes.Description}>{description}</p>
             </div>
           ) : (
-            <div className={classes.DetailsContainer}></div>
+            <div className={classes.DetailsContainer}>{reviewData}</div>
           )}
         </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  reviews: state.shop.reviews,
+});
+
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShopDetails);
