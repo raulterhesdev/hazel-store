@@ -3,26 +3,25 @@
   border-bottom: 1px solid var(--lighter-bg);
 }
 
-.Quantity {
-  display: flex;
+.Container {
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
   align-items: center;
-  justify-content: space-between;
+  padding-bottom: 12px;
 }
 
-.Quantity p {
-  padding: 4px 6px;
+.Title {
+  padding-bottom: 8px;
+  font-size: 1.2rem;
 }
-
-.Quantity p:nth-child(1) {
-  font-size: 1.1rem;
-}
-
 .Price {
-  text-align: right;
-  padding: 0px 4px 6px 4px;
+  opacity: 0.8;
 }
 
 .Total {
-  text-align: center;
+  text-align: right;
   font-size: 1.1rem;
+}
+.Highlight {
+  font-size: 1.2rem;
 }

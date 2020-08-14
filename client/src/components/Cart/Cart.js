@@ -99,6 +99,7 @@ export class Cart extends Component {
             value={this.state.deliveryInformation.firstName}
             label='First Name'
             onChange={this.onChange}
+            error='Test error'
           />
           <Input
             type='text'

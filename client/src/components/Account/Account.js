@@ -31,14 +31,13 @@ export class Account extends Component {
   };
 
   render() {
-    console.log(this.props.user);
     return (
       <div className={classes.Account}>
         <Card>
-          <div>
-            <p>Your Profile</p>
+          <div className={classes.Container}>
+            <p className={classes.Title}>Your Profile</p>
             {!this.props.user.emailValid ? (
-              <p>
+              <p className={classes.EmailValid}>
                 Email not valid. Please check your email account and validate
                 your email or RESEND EMAIL
               </p>
@@ -78,10 +77,12 @@ export class Account extends Component {
               label='Phone Number'
               onChange={this.onChange}
             />
-            <PrimaryButton
-              title='Update Profile'
-              onClick={this.updateProfile}
-            />
+            <div className={classes.ButtonContainer}>
+              <PrimaryButton
+                title='Update Profile'
+                onClick={this.updateProfile}
+              />
+            </div>
           </div>
         </Card>
       </div>

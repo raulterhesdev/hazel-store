@@ -1,0 +1,34 @@
+.Input {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Input label {
+  width: 100%;
+  padding-bottom: 4px;
+  text-align: left;
+  font-size: 1.1rem;
+}
+
+.Input input {
+  width: 100%;
+  outline: none;
+  padding: 12px;
+  background-color: var(--darker-bg);
+  color: var(--white);
+  border: 1px solid var(--dark-bg);
+}
+
+.Input input:focus {
+  border: 1px solid var(--accent);
+}
+
+.Error {
+  width: 100%;
+  text-align: left;
+  margin-top: 6px;
+  color: var(--error);
+}

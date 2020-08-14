@@ -38,8 +38,10 @@ export default (state = initialState, { type, payload }) => {
             prod.quantity += 1;
             updatedTotal += payload.price;
           } else if (payload.type === 'dec') {
-            prod.quantity -= 1;
-            updatedTotal -= payload.price;
+            if (prod.quantity > 0) {
+              prod.quantity -= 1;
+              updatedTotal -= payload.price;
+            }
           }
         }
         return prod;

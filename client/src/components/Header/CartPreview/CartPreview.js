@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
 
 import classes from './CartPreview.module.css';
+import { routes } from '../../../constants/routes';
 
 export class CartPreview extends Component {
   static propTypes = {
@@ -28,9 +30,9 @@ export class CartPreview extends Component {
       productsInCart = true;
       cartItems = this.props.cart.products.map((cartItem) => {
         return (
-          <div key={cartItem.productId}>
-            <p>{cartItem.title}</p>
+          <div key={cartItem.productId} className={classes.Item}>
             <span>&times;{cartItem.quantity}</span>
+            <p className={classes.ItemTitle}>{cartItem.title}</p>
           </div>
         );
       });
@@ -42,10 +44,26 @@ export class CartPreview extends Component {
         </div>
         {this.state.open ? (
           <div className={classes.CartContent}>
-            {productsInCart ? <p>Cart Items</p> : null}
+            {productsInCart ? (
+              <p className={classes.Title}>Cart Items</p>
+            ) : null}
             {cartItems}
             {productsInCart ? (
-              <p>Total Price: ${this.props.cart.totalPrice}</p>
+              <p className={classes.Total}>
+                Total Price: ${this.props.cart.totalPrice}
+              </p>
+            ) : null}
+            {productsInCart ? (
+              <div className={classes.LinkContainer}>
+                <NavLink
+                  to={routes.cart.path}
+                  exact={routes.cart.exact}
+                  className={classes.Link}
+                  onClick={this.toggle}
+                >
+                  Go to Cart
+                </NavLink>
+              </div>
             ) : null}
           </div>
         ) : null}

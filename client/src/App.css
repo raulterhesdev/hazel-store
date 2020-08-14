@@ -8,24 +8,8 @@
   --lighter-bg: #393e46;
   --darker-bg: #0d1116;
   --white: #f2f2f2;
-  --accent-gradient-45: linear-gradient(
-    45,
-    var(--accent-dark),
-    var(--accent),
-    var(--accent-light)
-  );
-  --accent-gradient-135: linear-gradient(
-    135,
-    var(--accent-dark),
-    var(--accent),
-    var(--accent-light)
-  );
-  --accent-gradient-215: linear-gradient(
-    215,
-    var(--accent-dark),
-    var(--accent),
-    var(--accent-light)
-  );
+  --error: #f91100;
+  --error-transparent: #f91100a1;
 }
 
 * {

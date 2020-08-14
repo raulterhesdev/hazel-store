@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import classes from './Input.module.css';
+
 const Input = (props) => {
   return (
-    <div>
+    <div className={classes.Input}>
       <label htmlFor={props.name}>{props.label}</label>
       <input
+        autoComplete='off'
         type={props.type}
         name={props.name}
         value={props.value}
@@ -13,6 +16,7 @@ const Input = (props) => {
         disabled={props.disabled}
         defaultValue={props.defaultValue}
       ></input>
+      <p className={classes.Error}>{props.error}</p>
     </div>
   );
 };
@@ -25,6 +29,7 @@ Input.propTypes = {
   value: PropTypes.string,
   disabled: PropTypes.bool,
   defaultValue: PropTypes.string,
+  error: PropTypes.string,
 };
 
 export default Input;

@@ -2,3 +2,29 @@
   margin-top: 13vh;
   color: white;
 }
+
+.Container {
+  padding: 12px 8px;
+}
+
+.ButtonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0;
+}
+
+.Title {
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 12px 0px 8px 0px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--lighter-bg);
+}
+
+.EmailValid {
+  text-align: center;
+  padding: 8px;
+  border: 1px solid var(--error);
+  background-color: var(--error-transparent);
+}

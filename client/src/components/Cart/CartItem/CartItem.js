@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 
 import classes from './CartItem.module.css';
 
+import Quantity from '../../UI/Quantity/Quantity';
+import DangerButton from '../../UI/DangerButton/DangerButton';
+
 const CartItem = ({
   product,
   quantity,
@@ -12,21 +15,27 @@ const CartItem = ({
 }) => {
   return (
     <div className={classes.CartItem}>
-      <div className={classes.Quantity}>
-        <p>{product.title}</p>
-        <p> &times;{quantity}</p>
-        <p onClick={() => updateQuantity(product._id, 'add', product.price)}>
-          Add
-        </p>
-        <p onClick={() => updateQuantity(product._id, 'dec', product.price)}>
-          Dec
-        </p>
-        <p onClick={() => removeProduct(product._id, quantity, product.price)}>
-          Delete
-        </p>
+      <div className={classes.Container}>
+        <Quantity
+          value={quantity}
+          add={() => updateQuantity(product._id, 'add', product.price)}
+          subtract={() => updateQuantity(product._id, 'dec', product.price)}
+        />
+        <div>
+          <p className={classes.Title}>{product.title}</p>
+          <p className={classes.Price}> Price per unit: ${product.price}</p>
+        </div>
+
+        <DangerButton
+          title='X'
+          onClick={() => removeProduct(product._id, quantity, product.price)}
+        />
       </div>
-      <p className={classes.Price}> Price per unit: ${product.price}</p>
-      <p className={classes.Total}>Price: ${quantity * product.price}</p>
+
+      <p className={classes.Total}>
+        Price:{' '}
+        <span className={classes.Highlight}>${quantity * product.price}</span>
+      </p>
     </div>
   );
 };
