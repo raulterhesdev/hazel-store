@@ -16,6 +16,9 @@ dotenv.config({ path: './config/config.env' });
 connectDB();
 
 // Route files imports
+const products = require('./routes/products');
+const auth = require('./routes/auth');
+const orders = require('./routes/orders');
 
 // express app
 const app = express();
@@ -39,6 +42,9 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Mount routers
+app.use('/api/products', products);
+app.use('/api/auth', auth);
+app.use('/api/orders', orders);
 
 // use error handler
 app.use(errorHandler);

@@ -35,14 +35,7 @@ export class ShopItem extends Component {
   };
 
   render() {
-    const {
-      imageUrl,
-      title,
-      discount,
-      price,
-      rating,
-      ratingCount,
-    } = this.props.product;
+    const { imageUrl, title, discount, price, rating } = this.props.product;
     return (
       <Card>
         <Modal
@@ -73,9 +66,7 @@ export class ShopItem extends Component {
             </h1>
             <div className={classes.RatingContainer}>
               <StarRating rating={rating} />
-              <p className={classes.Rating}>
-                {rating} ({ratingCount})
-              </p>
+              <p className={classes.Rating}>{rating}</p>
             </div>
             {discount > 0 ? (
               <div className={classes.PriceContainer}>
