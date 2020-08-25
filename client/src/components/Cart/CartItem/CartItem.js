@@ -23,7 +23,10 @@ const CartItem = ({
         />
         <div>
           <p className={classes.Title}>{product.title}</p>
-          <p className={classes.Price}> Price per unit: ${product.price}</p>
+          <p className={classes.Price}>
+            {' '}
+            Price per unit: ${product.price.toFixed(2)}
+          </p>
         </div>
 
         <DangerButton
@@ -34,7 +37,9 @@ const CartItem = ({
 
       <p className={classes.Total}>
         Price:{' '}
-        <span className={classes.Highlight}>${quantity * product.price}</span>
+        <span className={classes.Highlight}>
+          ${(quantity * product.price).toFixed(2)}
+        </span>
       </p>
     </div>
   );

@@ -3,6 +3,7 @@ const {
   getOrders,
   addOrder,
   addOrderPublic,
+  paymentIntent,
 } = require('../controllers/orders');
 const advancedResults = require('../middleware/advancedResults');
 const { authorize, protect } = require('../middleware/auth');
@@ -19,5 +20,6 @@ router
   .get(protect, authorize('admin'), advancedResults(Order), getOrders)
   .post(protect, addOrder);
 router.route('/public').post(addOrderPublic);
+router.route('/paymentIntent').post(paymentIntent);
 
 module.exports = router;

@@ -1,0 +1,22 @@
+.Admin {
+  min-height: 100vh;
+  padding-top: 12vh;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Container {
+  width: 90vw;
+  min-height: 90vh;
+  padding: 12px 8px;
+}
+
+.Title {
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 12px 0px 8px 0px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--lighter-bg);
+}

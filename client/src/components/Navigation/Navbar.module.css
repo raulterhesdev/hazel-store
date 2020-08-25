@@ -17,6 +17,22 @@
   transform: translateX(-100vw);
 }
 
+.Auth {
+  position: absolute;
+  bottom: 10%;
+  left: 30%;
+  width: 40%;
+}
+
+.Link {
+  display: block;
+  color: var(--white);
+  padding: 12px;
+  background-color: var(--accent-dark);
+  border-radius: 5px;
+  text-align: center;
+}
+
 .Open {
   transform: translateX(0);
   animation: slide-right 0.3s ease-in;

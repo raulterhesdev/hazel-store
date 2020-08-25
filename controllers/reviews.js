@@ -7,12 +7,14 @@ const Product = require('../models/Product');
 // @route   GET /api/products/:productId/reviews
 // @access  Public
 exports.getReviews = asyncHandler(async (req, res, next) => {
-  if (req.params.productId) {
-    const reviews = await Review.find({ productId: req.params.productId });
-    return res.status(200).json(res.advancedResults);
-  } else {
-    return next(new ErrorResponse(`Please provide a product Id`, 404));
-  }
+  // if (req.params.productId) {
+  //   const reviews = await Review.find({ productId: req.params.productId });
+  //   return res.status(200).json(res.advancedResults);
+  // } else {
+  //   return next(new ErrorResponse(`Please provide a product Id`, 404));
+  // }
+
+  res.status(200).json(res.advancedResults);
 });
 
 // @desc    Add review

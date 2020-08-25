@@ -46,7 +46,10 @@ export class ShopItem extends Component {
           <span className={classes.Close} onClick={this.toggleModal}>
             &times;
           </span>
-          <ShopDetails product={this.props.product} />
+          <ShopDetails
+            product={this.props.product}
+            addToCart={this.addToCart}
+          />
         </Modal>
 
         <div className={classes.ShopItem}>

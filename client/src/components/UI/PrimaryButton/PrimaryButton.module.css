@@ -11,3 +11,12 @@
 .Button:hover {
   background-color: var(--accent);
 }
+
+.Button:disabled {
+  opacity: 0.5;
+  cursor: initial;
+}
+
+.Button:disabled:hover {
+  background-color: var(--accent-dark);
+}

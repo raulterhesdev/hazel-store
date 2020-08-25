@@ -54,7 +54,6 @@ exports.login = asyncHandler(async (req, res, next) => {
 // @route   GET /api/auth/user
 // @access  Private
 exports.getUser = asyncHandler(async (req, res, next) => {
-  console.log(req.user);
   const user = await User.findById(req.user.id);
 
   res.status(200).json({ success: true, data: user });
@@ -69,6 +68,9 @@ exports.updateInfo = asyncHandler(async (req, res, next) => {
     lastName: req.body.lastName,
     address: req.body.address,
     phone: req.body.phone,
+    city: req.body.city,
+    state: req.body.state,
+    zip: req.body.zip,
   };
 
   const user = await User.findByIdAndUpdate(req.user.id, fieldsToUpdate, {

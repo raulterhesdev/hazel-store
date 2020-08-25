@@ -4,8 +4,10 @@ import { connect } from 'react-redux';
 
 import StarRating from '../../UI/StarRating/StarRating';
 import PrimaryButton from '../../UI/PrimaryButton/PrimaryButton';
+import SecondaryButton from '../../UI/SecondaryButton/SecondaryButton';
 import TabButton from '../../UI/TabButton/TabButton';
 import Review from '../Review/Review';
+import AddReview from '../AddReview/AddReview';
 
 import classes from './ShopDetails.module.css';
 
@@ -13,10 +15,13 @@ class ShopDetails extends Component {
   static propTypes = {
     product: PropTypes.object,
     reviews: PropTypes.array,
+    addToCart: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool.isRequired,
   };
 
   state = {
     showDescription: true,
+    showAddReview: false,
   };
 
   showDescription = () => {
@@ -27,7 +32,12 @@ class ShopDetails extends Component {
     this.setState({ showDescription: false });
   };
 
+  showAddReview = () => {
+    this.setState({ showAddReview: !this.state.showAddReview });
+  };
+
   render() {
+    let reviewCount = 0;
     const {
       _id,
       imageUrl,
@@ -35,13 +45,15 @@ class ShopDetails extends Component {
       discount,
       price,
       rating,
-      ratingCount,
       description,
     } = this.props.product;
 
     const reviewData = this.props.reviews
       .filter((review) => review.productId === _id)
-      .map((review) => <Review key={review._id} review={review} />);
+      .map((review) => {
+        reviewCount += 1;
+        return <Review key={review._id} review={review} />;
+      });
     return (
       <div className={classes.ShopDetails}>
         {discount > 0 ? (
@@ -55,7 +67,7 @@ class ShopDetails extends Component {
           <div className={classes.RatingContainer}>
             <StarRating rating={rating} />
             <p className={classes.Rating}>
-              {rating} ({ratingCount})
+              {rating} ({reviewCount})
             </p>
           </div>
           {discount > 0 ? (
@@ -71,14 +83,18 @@ class ShopDetails extends Component {
             <p className={classes.Price}>${price}</p>
           )}
         </div>
-        <div className={classes.Container}>
-          <PrimaryButton
-            onClick={() => {
-              console.log('NOT Toggle Modal');
-            }}
-            title='Add to Cart'
-          />
+        <div className={classes.ActionContainer}>
+          {this.props.isAuthenticated ? (
+            <SecondaryButton
+              onClick={this.showAddReview}
+              title='Leave a rating'
+            />
+          ) : null}
+          <PrimaryButton onClick={this.props.addToCart} title='Add to Cart' />
         </div>
+        {this.state.showAddReview ? (
+          <AddReview closeReview={this.showAddReview} productId={_id} />
+        ) : null}
         <div className={classes.Content}>
           <div className={classes.TabBar}>
             <TabButton
@@ -107,6 +123,7 @@ class ShopDetails extends Component {
 
 const mapStateToProps = (state) => ({
   reviews: state.shop.reviews,
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
 const mapDispatchToProps = {};

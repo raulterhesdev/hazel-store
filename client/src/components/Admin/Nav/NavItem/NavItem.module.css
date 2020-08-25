@@ -1,0 +1,12 @@
+.NavItem {
+  display: block;
+  color: var(--white);
+  padding: 18px 24px;
+  border-bottom: 2px solid var(--lighter-bg);
+  transition: all 0.3s ease-in;
+  font-size: 1rem;
+}
+
+.ActiveLink {
+  border-bottom: 2px solid var(--accent);
+}

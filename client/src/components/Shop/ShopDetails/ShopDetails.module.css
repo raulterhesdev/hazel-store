@@ -1,21 +1,22 @@
 .ShopDetails {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 40px 12px;
+  padding: 28px 12px;
 }
 
 .Title {
   grid-column: span 2;
   font-size: 1.2rem;
   border-bottom: 1px solid var(--lighter-bg);
-  margin-bottom: 12px;
+  margin-bottom: 24px;
   padding: 0 20px 6px;
   text-align: center;
 }
 
 .Image {
   width: 100%;
-  max-width: 300px;
+  max-height: 400px;
+  width: auto;
 }
 
 .Discount {
@@ -23,7 +24,7 @@
   position: absolute;
   top: 10px;
   left: -40px;
-  padding: 4px 50px;
+  padding: 12px 75px;
   transform: rotate(-45deg);
   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
 }
@@ -33,11 +34,19 @@
   margin: 0 auto;
 }
 
+.ActionContainer {
+  grid-column: span 2;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
 .InformationContainer {
   grid-column: span 2;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   margin: 6px 0 12px 0;
 }
 
@@ -71,9 +80,9 @@
 }
 
 .TabBar {
-  margin-left: 16px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .Content {
@@ -82,5 +91,10 @@
 }
 
 .DetailsContainer {
-  padding: 12px 4px;
+  padding: 24px 72px;
+}
+
+.Description {
+  font-size: 1.1em;
+  line-height: 1.7em;
 }

@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import Backdrop from '../UI/Backdrop/Backdrop';
 import Link from './Link/Link';
 
+import { NavLink } from 'react-router-dom';
+
 import classes from './Navbar.module.css';
 
 import { toggleNavbar } from '../../store/actions/uiActions';
@@ -18,6 +20,8 @@ export class Navbar extends Component {
   static propTypes = {
     navbarClosed: PropTypes.bool.isRequired,
     toggleNavbar: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool,
+    role: PropTypes.string,
   };
 
   toggle = () => {
@@ -45,16 +49,29 @@ export class Navbar extends Component {
     for (const key in routes) {
       if (routes.hasOwnProperty(key)) {
         const element = routes[key];
-        const linkElement = (
-          <Link
-            link={element.path}
-            exact={element.exact}
-            name={element.name}
-            key={key}
-            onClick={this.toggle}
-          />
-        );
-        navbarLinks.push(linkElement);
+
+        if (
+          (element.admin === false && element.authenticated === false) ||
+          (element.authenticated === true &&
+            element.admin === false &&
+            this.props.isAuthenticated === true) ||
+          // this.props.role === 'user') ||
+          (element.admin === true &&
+            element.authenticated === true &&
+            this.props.isAuthenticated === true &&
+            this.props.role === 'admin')
+        ) {
+          const linkElement = (
+            <Link
+              link={element.path}
+              exact={element.exact}
+              name={element.name}
+              key={key}
+              onClick={this.toggle}
+            />
+          );
+          navbarLinks.push(linkElement);
+        }
       }
     }
 
@@ -74,6 +91,8 @@ export class Navbar extends Component {
 
 const mapStateToProps = (state) => ({
   navbarClosed: state.ui.navbarClosed,
+  isAuthenticated: state.auth.isAuthenticated,
+  role: state.auth.user.role,
 });
 
 const mapDispatchToProps = { toggleNavbar };

@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const path = require('path');
+const fileUpload = require('express-fileupload');
 
 // Dev imports
 const colors = require('colors');
@@ -19,12 +20,15 @@ connectDB();
 const products = require('./routes/products');
 const auth = require('./routes/auth');
 const orders = require('./routes/orders');
-
+const reviews = require('./routes/reviews');
 // express app
 const app = express();
 
 // Body parser
 app.use(express.json());
+
+// File Upload
+app.use(fileUpload());
 
 // Dev logging middleware
 if (process.env.NODE_ENV === 'development') {
@@ -45,6 +49,7 @@ if (process.env.NODE_ENV === 'production') {
 app.use('/api/products', products);
 app.use('/api/auth', auth);
 app.use('/api/orders', orders);
+app.use('/api/reviews', reviews);
 
 // use error handler
 app.use(errorHandler);

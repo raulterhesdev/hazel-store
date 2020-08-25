@@ -1,0 +1,24 @@
+.SelectContainer {
+  padding: 8px;
+}
+
+.Label {
+  padding-bottom: 4px;
+  text-align: left;
+  font-size: 1.1rem;
+  display: block;
+}
+
+.Select {
+  width: 100%;
+  outline: none;
+  padding: 12px;
+  background-color: var(--darker-bg);
+  color: var(--white);
+  border: 1px solid var(--dark-bg);
+  border-radius: 5px;
+}
+
+.Select:focus {
+  border: 1px solid var(--accent);
+}

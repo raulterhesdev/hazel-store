@@ -33,6 +33,18 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: '',
   },
+  city: {
+    type: String,
+    default: '',
+  },
+  state: {
+    type: String,
+    default: '',
+  },
+  zip: {
+    type: String,
+    default: '',
+  },
   password: {
     type: String,
     required: [true, 'Please add a password'],

@@ -2,4 +2,5 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   margin-bottom: 32px;
+  min-height: 85vh;
 }

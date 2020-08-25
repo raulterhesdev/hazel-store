@@ -8,13 +8,17 @@ import StarRating from '../../UI/StarRating/StarRating';
 const Review = (props) => {
   return (
     <div className={classes.Review}>
-      <h1 className={classes.Title}>{props.review.title}</h1>
-      <div className={classes.Details}>
-        <p>{props.review.firstName + ' ' + props.review.lastName} </p>
-        <p>{props.review.date.toString().slice(4, 15)}</p>
+      <div className={classes.TitleContainer}>
+        <h1 className={classes.Title}>{props.review.title}</h1>
+        <div className={classes.Rating}>
+          <StarRating rating={props.review.rating} />
+        </div>
       </div>
-      <div className={classes.Rating}>
-        <StarRating rating={props.review.rating} />
+      <div className={classes.Details}>
+        <p>
+          {props.review.userId.firstName + ' ' + props.review.userId.lastName}{' '}
+        </p>
+        <p>{props.review.createdAt.toString().slice(0, 10)}</p>
       </div>
       <p>{props.review.text}</p>
     </div>

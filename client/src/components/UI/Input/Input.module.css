@@ -20,10 +20,14 @@
   background-color: var(--darker-bg);
   color: var(--white);
   border: 1px solid var(--dark-bg);
+  border-radius: 5px;
 }
 
 .Input input:focus {
   border: 1px solid var(--accent);
+}
+.Input input:disabled {
+  background-color: var(--lighter-bg);
 }
 
 .Error {

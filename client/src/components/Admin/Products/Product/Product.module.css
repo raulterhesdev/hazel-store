@@ -1,0 +1,51 @@
+.Product {
+  padding: 12px 16px;
+
+  background-color: var(--darker-bg);
+}
+
+.Section {
+  display: flex;
+  margin: 0 auto;
+}
+.Content {
+  padding: 0 12px;
+  width: 100%;
+}
+.Details,
+.Actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 8px;
+}
+
+.Actions span {
+  padding: 8px 12px;
+  border: 1px solid transparent;
+  transition: all 0.2s ease-in;
+}
+.Actions span:first-child:hover {
+  border: 1px solid var(--accent-dark);
+  color: var(--accent-dark);
+}
+
+.Actions span:last-child:hover {
+  border: 1px solid var(--error);
+  color: var(--error);
+}
+
+.Title {
+  text-align: center;
+  font-size: 1.1rem;
+  border-bottom: 1px solid var(--lighter-bg);
+}
+
+.Image {
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.Description {
+  padding: 12px;
+}

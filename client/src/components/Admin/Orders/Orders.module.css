@@ -1,0 +1,7 @@
+.Orders {
+  padding-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  grid-gap: 12px;
+  margin: 0 auto;
+}

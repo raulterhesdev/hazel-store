@@ -8,6 +8,7 @@ import classes from './StarRating.module.css';
 
 const StarRating = ({ rating }) => {
   let stars = [];
+  rating = rating / 2;
   for (let index = 1; index <= 5; index++) {
     let element;
     if (index < Math.round(rating)) {
@@ -39,7 +40,7 @@ const StarRating = ({ rating }) => {
 };
 
 StarRating.propTypes = {
-  rating: PropTypes.number.isRequired,
+  rating: PropTypes.number,
 };
 
 export default StarRating;

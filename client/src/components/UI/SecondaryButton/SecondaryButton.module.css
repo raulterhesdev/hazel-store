@@ -1,0 +1,24 @@
+.Button {
+  padding: 14px 32px;
+  border: 1px solid var(--accent-dark);
+  background-color: transparent;
+  color: var(--white);
+  transition: all 0.1s ease-in;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 1.1rem;
+}
+
+.Button:hover {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+.Button:disabled {
+  opacity: 0.5;
+  cursor: initial;
+}
+
+.Button:disabled:hover {
+  border: 1px solid var(--accent-dark);
+}

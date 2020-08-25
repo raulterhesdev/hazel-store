@@ -18,7 +18,8 @@
 .Title {
   font-size: 1.6rem;
   text-align: center;
-  border-bottom: 2px solid var(--lighter-bg);
+  border-bottom: 1px solid var(--lighter-bg);
+  padding-bottom: 6px;
   margin-bottom: 8px;
 }
 

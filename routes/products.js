@@ -4,6 +4,7 @@ const {
   createProduct,
   updateProduct,
   deleteProduct,
+  uploadImage,
 } = require('../controllers/products');
 const advancedResults = require('../middleware/advancedResults');
 const { authorize, protect } = require('../middleware/auth');
@@ -25,6 +26,8 @@ router
   .route('/')
   .get(advancedResults(Product), getProducts)
   .post(protect, authorize('admin'), createProduct);
+
+router.route('/upload').post(protect, authorize('admin'), uploadImage);
 
 router
   .route('/:id')

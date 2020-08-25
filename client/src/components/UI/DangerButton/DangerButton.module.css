@@ -12,5 +12,5 @@
 
 .Button:hover {
   color: var(--error);
-  border: 1px solid var(--error);
+  font-size: 1.3rem;
 }

@@ -1,0 +1,31 @@
+.Spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.Spinner div {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border: 3px solid var(--accent);
+  border-radius: 25px;
+  transform: rotate(0deg);
+  animation: spin 2s infinite ease;
+}
+
+@keyframes spin {
+  0% {
+    border-radius: 0;
+    transform: rotate(0deg);
+  }
+  50% {
+    border-radius: 25px;
+    transform: rotate(360deg);
+  }
+  100% {
+    border-radius: 0;
+    transform: rotate(0deg);
+  }
+}

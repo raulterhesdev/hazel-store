@@ -1,0 +1,16 @@
+.Payment {
+  padding: 12px;
+  margin-top: 16px;
+}
+
+.Error {
+  color: var(--error);
+  padding: 12px 0;
+}
+
+.Action {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

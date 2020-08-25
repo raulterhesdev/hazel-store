@@ -1,0 +1,26 @@
+.AddReview {
+  margin: 0 auto;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  background-color: var(--darker-bg);
+  padding: 32px 16px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.Title {
+  text-align: center;
+  font-size: 1.2rem;
+  border-bottom: 1px solid var(--dark-bg);
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.Button {
+  width: 100%;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}

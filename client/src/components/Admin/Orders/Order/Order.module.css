@@ -1,0 +1,38 @@
+.Order {
+  padding: 20px;
+  background-color: var(--darker-bg);
+}
+
+.Section {
+  padding: 5px;
+}
+
+.Section span {
+  opacity: 0.6;
+  position: relative;
+}
+
+.Section span::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -6px;
+  width: 4px;
+  height: 10px;
+  background-color: var(--accent-dark);
+  border-radius: 2px;
+}
+
+ul {
+  list-style: none;
+}
+
+ul li {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 36px;
+}
+
+ul li:nth-child(2n + 1) {
+  background-color: var(--dark-bg);
+}

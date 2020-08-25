@@ -15,6 +15,8 @@ const Input = (props) => {
         onChange={props.onChange}
         disabled={props.disabled}
         defaultValue={props.defaultValue}
+        onFocus={props.onFocus}
+        onBlur={props.onBlur}
       ></input>
       <p className={classes.Error}>{props.error}</p>
     </div>

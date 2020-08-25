@@ -1,26 +1,41 @@
 .Review {
-  padding: 8px 12px;
-  border-bottom: 2px solid var(--lighter-bg);
-  margin-bottom: 12px;
+  padding: 16px 24px;
+}
+
+c.TitleContainer {
+  display: flex;
+  justify-content: space-between;
 }
 
 .Title {
   font-size: 1.2rem;
-  padding: 2px 4px;
-  border-left: 3px solid var(--accent-dark);
+  padding: 4px 0;
+  position: relative;
+}
+
+.Title::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: -8px;
+  height: 14px;
+  width: 4px;
+  border-radius: 2px;
+  background-color: var(--accent);
 }
 
 .Details {
-  margin-top: 2px;
+  padding: 5px 0;
   display: flex;
   justify-content: space-between;
   opacity: 0.5;
-  padding-bottom: 2px;
-  border-bottom: 1px solid var(--lighter-bg);
+}
+
+.Details p:first-child {
+  padding-bottom: 4px;
 }
 
 .Rating {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 4px;
 }

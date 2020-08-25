@@ -1,6 +1,8 @@
 const Order = require('../models/Order');
 const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middleware/asyncHandler');
+const Stripe = require('stripe');
+const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
 // @desc    Get all orders
 // @route   GET /api/orders
@@ -54,4 +56,18 @@ exports.addOrderPublic = asyncHandler(async (req, res, next) => {
   await order.remove();
 
   res.status(200).json({ success: true, data: {} });
+});
+
+// @desc    Create payment intent
+// @route   Post /api/orders/paymentIntent
+// @access  private
+exports.paymentIntent = asyncHandler(async (req, res, next) => {
+  const { amount } = req.body;
+
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount,
+    currency: 'usd',
+  });
+
+  res.status(201).json({ success: true, data: paymentIntent.client_secret });
 });
