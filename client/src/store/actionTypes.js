@@ -53,3 +53,7 @@ export const FETCH_ORDERS_START = 'FETCH_ORDERS_START';
 export const FETCH_ORDERS_SUCCESS = 'FETCH_ORDERS_SUCCESS';
 export const FETCH_ORDERS_ERROR = 'FETCH_ORDERS_ERROR';
 export const CLEAR_CART = 'CLEAR_CART';
+
+// Error/Success message actions
+export const SHOW_MESSAGE = 'SHOW_MESSAGE';
+export const CLEAR_MESSAGE = 'CLEAR_MESSAGE';

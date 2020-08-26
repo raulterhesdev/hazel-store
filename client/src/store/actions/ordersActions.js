@@ -9,6 +9,8 @@ import {
   CLEAR_CART,
 } from '../actionTypes';
 
+import { showMessage } from './uiActions';
+
 //send order
 export const sendOrder = (payload) => (dispatch, getState) => {
   // Register Start
@@ -39,6 +41,7 @@ export const sendOrder = (payload) => (dispatch, getState) => {
       dispatch({ type: CLEAR_CART });
     })
     .catch((error) => {
+      dispatch(showMessage(true, error.response.data.error));
       dispatch({
         type: SEND_ORDER_ERROR,
         payload: error.response.data.error,
@@ -70,6 +73,12 @@ export const fetchOrders = (payload) => (dispatch, getState) => {
       dispatch({ type: FETCH_ORDERS_SUCCESS, payload: res.data });
     })
     .catch((error) => {
+      dispatch(
+        showMessage(
+          true,
+          'There was an error getting the orders. Please try again'
+        )
+      );
       dispatch({
         type: FETCH_ORDERS_ERROR,
         payload: error.response.data.error,

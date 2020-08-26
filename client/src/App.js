@@ -12,6 +12,7 @@ import Cart from './components/Cart/Cart';
 import Account from './components/Account/Account';
 import Admin from './components/Admin/Admin';
 import Auth from './components/Auth/Auth';
+import Message from './components/Message/Message';
 
 import { routes } from './constants/routes';
 
@@ -62,6 +63,7 @@ export class App extends Component {
           <Redirect to={routes.home.path} />
         </Switch>
         <Footer />
+        <Message />
       </div>
     );
   }

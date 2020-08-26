@@ -53,6 +53,7 @@ export class Cart extends Component {
   nextStep = () => {
     if (this.state.step === 3) {
       this.setState({ step: 0 });
+      this.props.history.push('/products');
     } else {
       this.setState({ step: this.state.step + 1 });
     }

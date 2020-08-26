@@ -16,7 +16,7 @@ class ShopDetails extends Component {
     product: PropTypes.object,
     reviews: PropTypes.array,
     addToCart: PropTypes.func.isRequired,
-    isAuthenticated: PropTypes.bool.isRequired,
+    isAuthenticated: PropTypes.bool,
   };
 
   state = {

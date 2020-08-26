@@ -151,6 +151,7 @@ export class Auth extends Component {
           password: this.state.password,
         });
       }
+      this.props.history.push('/products');
     }
   };
 

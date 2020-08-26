@@ -21,6 +21,7 @@ import {
   ADD_REVIEW_SUCCESS,
   ADD_REVIEW_ERROR,
 } from '../actionTypes';
+import { showMessage } from './uiActions';
 
 // Fetch Products
 export const fetchProducts = () => (dispatch) => {
@@ -40,6 +41,12 @@ export const fetchProducts = () => (dispatch) => {
     )
     .catch((error) => {
       console.log(error.response.data);
+      dispatch(
+        showMessage(
+          true,
+          'there was an error getting all the products. Please try again.'
+        )
+      );
       dispatch({
         type: FETCH_PRODUCTS_ERROR,
         payload: error.response.data.error,
@@ -63,6 +70,12 @@ export const fetchReviews = () => (dispatch) => {
     .then((res) => dispatch({ type: FETCH_REVIEWS_SUCCESS, payload: res.data }))
     .catch((error) => {
       console.log(error.response.data);
+      dispatch(
+        showMessage(
+          true,
+          'there was an error getting all the reviews. Please try again.'
+        )
+      );
       dispatch({
         type: FETCH_REVIEWS_ERROR,
         payload: error.response.data.error,
@@ -112,11 +125,13 @@ export const addProduct = ({ title, description, price, category, file }) => (
 
       axios
         .post('/api/products', body, config)
-        .then((res) =>
-          dispatch({ type: ADD_PRODUCT_SUCCESS, payload: res.data })
-        )
+        .then((res) => {
+          dispatch({ type: ADD_PRODUCT_SUCCESS, payload: res.data });
+          dispatch(showMessage(false, 'Product added successfully!'));
+        })
         .catch((error) => {
           console.log(error.response.data);
+          dispatch(showMessage(true, error.response.data.error));
           dispatch({
             type: ADD_PRODUCT_ERROR,
             payload: error.response.data.error,
@@ -125,6 +140,7 @@ export const addProduct = ({ title, description, price, category, file }) => (
     })
     .catch((error) => {
       console.log(error.response.data);
+      dispatch(showMessage(true, 'Image could not be uploaded.'));
       dispatch({ type: ADD_PRODUCT_ERROR, payload: error.response.data.error });
     });
 };
@@ -139,7 +155,7 @@ export const editProduct = ({
   file,
   imageUrl,
 }) => (dispatch, getState) => {
-  // Add Start
+  // edit Start
   dispatch({ type: EDIT_PRODUCT_START });
 
   // Headers
@@ -178,11 +194,13 @@ export const editProduct = ({
         console.log(body);
         axios
           .put(`/api/products/${id}`, body, config)
-          .then((res) =>
-            dispatch({ type: EDIT_PRODUCT_SUCCESS, payload: res.data })
-          )
+          .then((res) => {
+            dispatch(showMessage(false, 'Product edited successfully!'));
+            dispatch({ type: EDIT_PRODUCT_SUCCESS, payload: res.data });
+          })
           .catch((error) => {
             console.log(error.response.data);
+            dispatch(showMessage(true, error.response.data.error));
             dispatch({
               type: EDIT_PRODUCT_ERROR,
               payload: error.response.data.error,
@@ -191,6 +209,7 @@ export const editProduct = ({
       })
       .catch((error) => {
         console.log(error.response.data);
+        dispatch(showMessage(true, 'Image could not be uploaded.'));
         dispatch({
           type: EDIT_PRODUCT_ERROR,
           payload: error.response.data.error,
@@ -208,11 +227,13 @@ export const editProduct = ({
     console.log(body);
     axios
       .put(`/api/products/${id}`, body, config)
-      .then((res) =>
-        dispatch({ type: EDIT_PRODUCT_SUCCESS, payload: res.data })
-      )
+      .then((res) => {
+        dispatch(showMessage(false, 'Product edited successfully!'));
+        dispatch({ type: EDIT_PRODUCT_SUCCESS, payload: res.data });
+      })
       .catch((error) => {
         console.log(error.response.data);
+        dispatch(showMessage(true, error.response.data.error));
         dispatch({
           type: EDIT_PRODUCT_ERROR,
           payload: error.response.data.error,
@@ -241,6 +262,7 @@ export const deleteProduct = ({ id }) => (dispatch, getState) => {
   axios
     .delete(`/api/products/${id}`, config)
     .then((res) => {
+      dispatch(showMessage(true, 'Product deleted'));
       dispatch({ type: DELETE_PRODUCT_SUCCESS, payload: id });
     })
     .catch((error) => {
@@ -281,9 +303,16 @@ export const addReview = ({ title, text, rating, id }) => (
 
   axios
     .post(`/api/products/${id}/reviews`, body, config)
-    .then((res) => dispatch({ type: ADD_REVIEW_SUCCESS, payload: res.data }))
+    .then((res) => {
+      dispatch(showMessage(false, 'Review Added'));
+      dispatch({ type: ADD_REVIEW_SUCCESS, payload: res.data });
+      dispatch(fetchProducts());
+    })
     .catch((error) => {
       console.log(error.response.data);
+      dispatch(
+        showMessage(true, 'Only one review/product allowed for each user.')
+      );
       dispatch({
         type: ADD_REVIEW_ERROR,
         payload: error.response.data.error,

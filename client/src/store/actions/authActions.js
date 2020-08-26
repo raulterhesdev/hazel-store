@@ -15,6 +15,8 @@ import {
   UPDATE_USER_ERROR,
 } from '../actionTypes';
 
+import { showMessage } from './uiActions';
+
 //register user
 export const registerUser = ({ firstName, lastName, email, password }) => (
   dispatch
@@ -37,8 +39,12 @@ export const registerUser = ({ firstName, lastName, email, password }) => (
       dispatch(getLoggedUser());
     })
     .catch((error) => {
-      if (error.response.data.error === 'Duplicate field value entered')
+      if (error.response.data.error === 'Duplicate field value entered') {
+        dispatch(showMessage(true, 'Email already registered.'));
         dispatch({ type: REGISTER_FAIL, payload: 'Email already registered.' });
+      } else {
+        dispatch(showMessage(true, error.response.data.error));
+      }
     });
 };
 
@@ -62,7 +68,8 @@ export const loginUser = ({ email, password }) => (dispatch) => {
       dispatch(getLoggedUser());
     })
     .catch((error) => {
-      console.log(error.response.data);
+      console.log(error.response);
+      dispatch(showMessage(true, error.response.data.error));
       dispatch({ type: LOGIN_FAIL, payload: error.response.data.error });
     });
 };
@@ -127,10 +134,16 @@ export const updateUser = ({
   });
   axios
     .put('/api/auth/updateInfo', body, config)
-    .then((res) => dispatch({ type: UPDATE_USER_SUCCESS, payload: res.data }))
+    .then((res) => {
+      dispatch(showMessage(false, 'Account updated successfully!'));
+      dispatch({ type: UPDATE_USER_SUCCESS, payload: res.data });
+    })
     .catch((error) => {
-      console.log(error.response.data);
-      dispatch({ type: UPDATE_USER_ERROR, payload: error.response.data.error });
+      console.log(error.response);
+      dispatch(
+        showMessage(true, 'There was an error. Please try again later.')
+      );
+      dispatch({ type: UPDATE_USER_ERROR, payload: error.response.data });
     });
 };
 
@@ -142,33 +155,4 @@ export const logout = () => ({
 export const tryAutoLogin = () => (dispatch) => {
   console.log(localStorage.getItem('token'));
   dispatch(getLoggedUser());
-  // // Update start
-  // dispatch({ type: UPDATE_USER_START });
-  // //headers
-  // const config = {
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //   },
-  // };
-  // const token = getState().auth.token;
-  // if (token) {
-  //   config.headers['Authorization'] = `Bearer ${token}`;
-  // }
-  // //request body
-  // const body = JSON.stringify({
-  //   firstName,
-  //   lastName,
-  //   address,
-  //   phone,
-  //   city,
-  //   state,
-  //   zip,
-  // });
-  // axios
-  //   .put('/api/auth/updateInfo', body, config)
-  //   .then((res) => dispatch({ type: UPDATE_USER_SUCCESS, payload: res.data }))
-  //   .catch((error) => {
-  //     console.log(error.response.data);
-  //     dispatch({ type: UPDATE_USER_ERROR, payload: error.response.data.error });
-  //   });
 };
