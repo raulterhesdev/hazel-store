@@ -1,4 +1,9 @@
-import { ADD_TO_CART, UPDATE_CART_ITEM, REMOVE_PRODUCT } from '../actionTypes';
+import {
+  ADD_TO_CART,
+  UPDATE_CART_ITEM,
+  REMOVE_PRODUCT,
+  CLEAR_CART,
+} from '../actionTypes';
 
 const initialState = {
   products: [],
@@ -59,6 +64,11 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         products: updatedItems,
         totalPrice: state.totalPrice - payload.quantity * payload.price,
+      };
+    case CLEAR_CART:
+      return {
+        products: [],
+        totalPrice: 0,
       };
     default:
       return state;

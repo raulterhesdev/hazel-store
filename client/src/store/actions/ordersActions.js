@@ -6,6 +6,7 @@ import {
   FETCH_ORDERS_START,
   FETCH_ORDERS_ERROR,
   FETCH_ORDERS_SUCCESS,
+  CLEAR_CART,
 } from '../actionTypes';
 
 //send order
@@ -31,11 +32,11 @@ export const sendOrder = (payload) => (dispatch, getState) => {
   //request body
   const body = JSON.stringify(payload);
 
-  console.log(body);
   axios
     .post(path, body, config)
     .then((res) => {
       dispatch({ type: SEND_ORDER_SUCCESS, payload: res.data });
+      dispatch({ type: CLEAR_CART });
     })
     .catch((error) => {
       dispatch({

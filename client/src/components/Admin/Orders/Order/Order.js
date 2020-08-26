@@ -28,11 +28,11 @@ const Order = (props) => {
       </p>
       <p className={classes.Section}>
         <span>Phone:</span>
-        {` $${props.order.phone} `}
+        {` ${props.order.phone} `}
       </p>
       <p className={classes.Section}>
         <span>Email:</span>
-        {` $${props.order.email} `}
+        {` ${props.order.email} `}
       </p>
       <p className={classes.Section}>
         <span>Order Content:</span>
