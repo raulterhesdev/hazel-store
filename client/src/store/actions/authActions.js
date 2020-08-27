@@ -68,7 +68,6 @@ export const loginUser = ({ email, password }) => (dispatch) => {
       dispatch(getLoggedUser());
     })
     .catch((error) => {
-      console.log(error.response);
       dispatch(showMessage(true, error.response.data.error));
       dispatch({ type: LOGIN_FAIL, payload: error.response.data.error });
     });
@@ -93,7 +92,6 @@ export const getLoggedUser = () => (dispatch, getState) => {
     .get('/api/auth/user', config)
     .then((res) => dispatch({ type: FETCH_USER_SUCCESS, payload: res.data }))
     .catch((error) => {
-      console.log(error.response.data);
       dispatch({ type: FETCH_USER_ERROR, payload: error.response.data.error });
     });
 };
