@@ -19,11 +19,11 @@ export class Auth extends Component {
 
   state = {
     isSignUp: false,
-    firstName: 'Terhes',
-    lastName: 'Raul',
-    email: 'raul1234@gmail.com',
-    password: 'Test1234',
-    confirmPassword: 'Test1234',
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
     firstNameError: '',
     lastNameError: '',
     emailError: '',
