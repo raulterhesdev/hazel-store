@@ -83,7 +83,6 @@ OrderSchema.pre('save', async function (next) {
       const product = await this.model('Product').findById(prod.productId);
 
       total = total + product.price * prod.quantity;
-      console.log(total);
       this.totalPrice = total;
     });
   } catch (error) {

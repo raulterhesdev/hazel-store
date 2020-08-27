@@ -17,7 +17,6 @@ export class Showcase extends Component {
 
   componentDidMount() {
     if (this.props.token !== '' && this.props.isAuthenticated !== true) {
-      console.log('here');
       this.props.tryAutoLogin();
     }
   }

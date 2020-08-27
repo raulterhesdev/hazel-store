@@ -55,6 +55,8 @@ const Order = (props) => {
   );
 };
 
-Order.propTypes = {};
+Order.propTypes = {
+  order: PropTypes.object.isRequired,
+};
 
 export default Order;

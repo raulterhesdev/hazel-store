@@ -30,10 +30,8 @@ exports.uploadImage = asyncHandler(async (req, res, next) => {
       .status(400)
       .json({ success: false, data: 'No file was uploaded' });
   }
-  console.log(req.files);
 
   const file = req.files.file;
-  console.log(__dirname);
 
   file.mv(
     `${path.join(__dirname, '../')}/client/public/uploads/${file.name}`,

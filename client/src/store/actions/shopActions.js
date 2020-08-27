@@ -191,7 +191,6 @@ export const editProduct = ({
           category,
           imageUrl: imagePath,
         });
-        console.log(body);
         axios
           .put(`/api/products/${id}`, body, config)
           .then((res) => {
@@ -224,7 +223,6 @@ export const editProduct = ({
       category,
       imageUrl: imagePath,
     });
-    console.log(body);
     axios
       .put(`/api/products/${id}`, body, config)
       .then((res) => {

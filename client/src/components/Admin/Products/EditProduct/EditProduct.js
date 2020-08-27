@@ -36,7 +36,6 @@ export class EditProduct extends PureComponent {
   };
 
   componentDidUpdate(prevProps) {
-    console.log(this.props.editProduct);
     if (this.props.editProduct !== prevProps.editProduct) {
       if (this.props.editProduct) {
         this.setState({
