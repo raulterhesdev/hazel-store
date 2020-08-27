@@ -35,7 +35,7 @@ export const fetchProducts = () => (dispatch) => {
   };
 
   axios
-    .get('/api/products', config)
+    .get('https://ancient-woodland-35392.herokuapp.com/api/products', config)
     .then((res) => {
       console.log(res.data);
       dispatch({ type: FETCH_PRODUCTS_SUCCESS, payload: res.data });
@@ -67,7 +67,7 @@ export const fetchReviews = () => (dispatch) => {
   };
 
   axios
-    .get('/api/reviews', config)
+    .get('https://ancient-woodland-35392.herokuapp.com/api/reviews', config)
     .then((res) => {
       console.log(res.data);
       dispatch({ type: FETCH_REVIEWS_SUCCESS, payload: res.data });
