@@ -15,15 +15,14 @@ export class Showcase extends Component {
     isAuthenticated: PropTypes.bool,
   };
 
-  // Shall be uncommented!!!
-  // componentDidMount() {
-  //   if (
-  //     (this.props.token !== '' || this.props.token !== null) &&
-  //     this.props.isAuthenticated !== true
-  //   ) {
-  //     this.props.tryAutoLogin();
-  //   }
-  // }
+  componentDidMount() {
+    if (
+      (this.props.token !== '' || this.props.token !== null) &&
+      this.props.isAuthenticated !== true
+    ) {
+      this.props.tryAutoLogin();
+    }
+  }
 
   render() {
     return (
