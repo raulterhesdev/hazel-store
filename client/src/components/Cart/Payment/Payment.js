@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import SecondaryButton from '../../UI/SecondaryButton/SecondaryButton';
 import axios from 'axios';
@@ -90,7 +90,5 @@ const Payment = (props) => {
     </div>
   );
 };
-
-Payment.propTypes = {};
 
 export default Payment;

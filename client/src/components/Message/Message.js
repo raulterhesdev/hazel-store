@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+
 import { connect } from 'react-redux';
 import classes from './Message.module.css';
 
 export class Message extends Component {
-  static propTypes = {};
-
   render() {
     const styleClasses = this.props.errorMessage
       ? classes.Message + ' ' + classes.Error

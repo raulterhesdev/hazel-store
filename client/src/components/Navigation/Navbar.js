@@ -5,8 +5,6 @@ import PropTypes from 'prop-types';
 import Backdrop from '../UI/Backdrop/Backdrop';
 import Link from './Link/Link';
 
-import { NavLink } from 'react-router-dom';
-
 import classes from './Navbar.module.css';
 
 import { toggleNavbar } from '../../store/actions/uiActions';

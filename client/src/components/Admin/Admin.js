@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 import Card from '../UI/Card/Card';
 import Nav from './Nav/Nav';
@@ -11,8 +10,6 @@ import classes from './Admin.module.css';
 import { adminRouter } from '../../constants/routes';
 
 export class Admin extends Component {
-  static propTypes = {};
-
   render() {
     let displayComponent;
     switch (this.props.location.pathname) {
@@ -21,7 +18,7 @@ export class Admin extends Component {
         break;
       case `/admin/${adminRouter.products.path}`:
         displayComponent = <Products />;
-
+        break;
       default:
         break;
     }

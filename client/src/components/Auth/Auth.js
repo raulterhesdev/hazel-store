@@ -77,8 +77,8 @@ export class Auth extends Component {
         if (this.state.password === '') {
           this.setState({ passwordError: 'Please enter a password' });
         } else {
-          var pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/;
-          if (!pattern.test(this.state.password)) {
+          var patternPass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/;
+          if (!patternPass.test(this.state.password)) {
             this.setState({
               passwordError:
                 'Password must be at least 6 character long and contain: one digit, one uppercase and one lowercase character',
