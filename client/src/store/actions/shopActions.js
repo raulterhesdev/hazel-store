@@ -36,9 +36,10 @@ export const fetchProducts = () => (dispatch) => {
 
   axios
     .get('/api/products', config)
-    .then((res) =>
-      dispatch({ type: FETCH_PRODUCTS_SUCCESS, payload: res.data })
-    )
+    .then((res) => {
+      console.log(res.data);
+      dispatch({ type: FETCH_PRODUCTS_SUCCESS, payload: res.data });
+    })
     .catch((error) => {
       console.log(error.response.data);
       dispatch(
@@ -67,7 +68,10 @@ export const fetchReviews = () => (dispatch) => {
 
   axios
     .get('/api/reviews', config)
-    .then((res) => dispatch({ type: FETCH_REVIEWS_SUCCESS, payload: res.data }))
+    .then((res) => {
+      console.log(res.data);
+      dispatch({ type: FETCH_REVIEWS_SUCCESS, payload: res.data });
+    })
     .catch((error) => {
       console.log(error.response.data);
       dispatch(

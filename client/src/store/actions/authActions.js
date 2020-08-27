@@ -154,5 +154,5 @@ export const logout = () => ({
 //try auto login user
 export const tryAutoLogin = () => (dispatch) => {
   console.log(localStorage.getItem('token'));
-  // dispatch(getLoggedUser());
+  dispatch(getLoggedUser());
 };

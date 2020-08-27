@@ -16,7 +16,10 @@ export class Showcase extends Component {
   };
 
   componentDidMount() {
-    if (this.props.token !== '' && this.props.isAuthenticated !== true) {
+    if (
+      (this.props.token !== '' || this.props.token !== null) &&
+      this.props.isAuthenticated !== true
+    ) {
       this.props.tryAutoLogin();
     }
   }
