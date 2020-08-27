@@ -7,7 +7,6 @@ const asyncHandler = require('../middleware/asyncHandler');
 // @route   GET /api/products
 // @access  Public
 exports.getProducts = asyncHandler(async (req, res, next) => {
-  console.log('Get all products');
   res.status(200).json(res.advancedResults);
 });
 
@@ -34,20 +33,21 @@ exports.uploadImage = asyncHandler(async (req, res, next) => {
 
   const file = req.files.file;
 
-  file.mv(
-    `${path.join(__dirname, '../')}/client/public/uploads/${file.name}`,
-    (err) => {
-      if (err) {
-        console.error(err);
-        return res.status(500).send(err);
-      }
+  const path = `${path.join(__dirname, '../')}/client/public/uploads/${
+    file.name
+  }`;
 
-      res.status(201).json({
-        success: true,
-        data: { filename: file.name, filePath: `/uploads/${file.name}` },
-      });
+  file.mv(path, (err) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send(err);
     }
-  );
+
+    res.status(201).json({
+      success: true,
+      data: { filename: file.name, filePath: path },
+    });
+  });
 });
 
 // @desc    Add a product
