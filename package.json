@@ -7,7 +7,8 @@
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install npm && run build"
   },
   "repository": {
     "type": "git",
@@ -40,5 +41,8 @@
     "slugify": "^1.4.0",
     "stripe": "^8.89.0",
     "xss-clean": "^0.1.1"
+  },
+  "engines": {
+    "node": "12.16.1"
   }
 }
