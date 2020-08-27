@@ -33,11 +33,13 @@ exports.uploadImage = asyncHandler(async (req, res, next) => {
 
   const file = req.files.file;
 
-  const path = `${path.join(__dirname, '../')}/client/public/uploads/${
+  const filePath = `${path.join(__dirname, '../')}/client/public/uploads/${
     file.name
   }`;
 
-  file.mv(path, (err) => {
+  console.log(filePath);
+
+  file.mv(filePath, (err) => {
     if (err) {
       console.error(err);
       return res.status(500).send(err);
@@ -45,7 +47,7 @@ exports.uploadImage = asyncHandler(async (req, res, next) => {
 
     res.status(201).json({
       success: true,
-      data: { filename: file.name, filePath: path },
+      data: { filename: file.name, filePath: filePath },
     });
   });
 });
