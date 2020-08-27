@@ -22,3 +22,9 @@
 .Button:disabled:hover {
   border: 1px solid var(--accent-dark);
 }
+
+@media (max-width: 600px) {
+  .Button {
+    font-size: 1rem;
+  }
+}

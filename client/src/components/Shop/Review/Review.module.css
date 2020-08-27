@@ -2,7 +2,7 @@
   padding: 16px 24px;
 }
 
-c.TitleContainer {
+.TitleContainer {
   display: flex;
   justify-content: space-between;
 }
@@ -38,4 +38,10 @@ c.TitleContainer {
 .Rating {
   display: flex;
   justify-content: flex-end;
+}
+
+@media (max-width: 600px) {
+  .Review {
+    padding: 6px;
+  }
 }

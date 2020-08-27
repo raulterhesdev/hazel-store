@@ -5,3 +5,9 @@
   grid-gap: 12px;
   margin: 0 auto;
 }
+
+@media (max-width: 600px) {
+  .Orders {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+}

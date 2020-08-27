@@ -11,8 +11,8 @@
 
 .Container {
   padding: 18px;
-  width: 450px;
-  max-width: 98vw;
+  width: 98vw;
+  max-width: 450px;
 }
 
 .Title {

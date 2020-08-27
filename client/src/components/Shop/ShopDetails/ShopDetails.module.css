@@ -98,3 +98,18 @@
   font-size: 1.1em;
   line-height: 1.7em;
 }
+
+@media (max-width: 600px) {
+  .Image {
+    max-height: 300px;
+  }
+
+  .InformationContainer {
+    justify-content: space-between;
+    margin: 12px;
+  }
+
+  .DetailsContainer {
+    padding: 24px;
+  }
+}

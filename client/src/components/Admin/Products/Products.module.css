@@ -18,3 +18,9 @@
   grid-gap: 12px;
   margin: 0 auto;
 }
+
+@media (max-width: 600px) {
+  .Container {
+    width: 98vw;
+  }
+}

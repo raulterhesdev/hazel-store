@@ -35,3 +35,9 @@
   border: 1px solid var(--error);
   background-color: var(--error-transparent);
 }
+
+@media (max-width: 600px) {
+  .Container {
+    width: 98vw;
+  }
+}

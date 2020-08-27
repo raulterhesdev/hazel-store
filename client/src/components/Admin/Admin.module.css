@@ -20,3 +20,9 @@
   margin-bottom: 8px;
   border-bottom: 1px solid var(--lighter-bg);
 }
+
+@media (max-width: 600px) {
+  .Container {
+    width: 98vw;
+  }
+}

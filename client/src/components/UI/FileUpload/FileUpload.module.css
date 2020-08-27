@@ -1,0 +1,14 @@
+.Upload {
+  margin-top: 12px;
+  padding: 8px;
+}
+
+.Upload input {
+  width: 100%;
+  outline: none;
+  padding: 12px;
+  background-color: var(--darker-bg);
+  color: var(--white);
+  border: 1px solid var(--dark-bg);
+  border-radius: 5px;
+}

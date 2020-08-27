@@ -49,3 +49,21 @@
 .Description {
   padding: 12px;
 }
+
+@media (max-width: 600px) {
+  .Details {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 330px) {
+  .Details {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .Image {
+    max-width: 100px;
+    max-height: 100px;
+  }
+}
