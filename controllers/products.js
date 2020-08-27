@@ -7,6 +7,7 @@ const asyncHandler = require('../middleware/asyncHandler');
 // @route   GET /api/products
 // @access  Public
 exports.getProducts = asyncHandler(async (req, res, next) => {
+  console.log('Get all products');
   res.status(200).json(res.advancedResults);
 });
 
