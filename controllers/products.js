@@ -33,9 +33,9 @@ exports.uploadImage = asyncHandler(async (req, res, next) => {
 
   const file = req.files.file;
 
-  const filePath = `${__dirname}/client/public/uploads/${file.name}`;
+  const filePath = `/app/client/public/uploads/${file.name}`;
 
-  console.log(filePath);
+  // console.log(filePath);
 
   file.mv(filePath, (err) => {
     if (err) {
