@@ -328,6 +328,7 @@ export const addReview = ({ title, text, rating, id }) => (
       dispatch(showMessage(false, 'Review Added'));
       dispatch({ type: ADD_REVIEW_SUCCESS, payload: res.data });
       dispatch(fetchProducts());
+      dispatch(fetchReviews());
     })
     .catch((error) => {
       dispatch(
