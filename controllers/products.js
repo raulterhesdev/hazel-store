@@ -10,52 +10,6 @@ exports.getProducts = asyncHandler(async (req, res, next) => {
   res.status(200).json(res.advancedResults);
 });
 
-// @desc   Upload product image
-// @route   POST /api/products/upload
-// @access  Private/admin
-
-exports.uploadImage = asyncHandler(async (req, res, next) => {
-  // check if user is admin
-  if (req.user.role !== 'admin') {
-    return next(
-      new ErrorResponse(
-        `User with id ${req.user.id} is not authorized to upload an image`,
-        400
-      )
-    );
-  }
-
-  if (req.files === null) {
-    return res
-      .status(400)
-      .json({ success: false, data: 'No file was uploaded' });
-  }
-
-  const file = req.files.file;
-
-  const filePath = `${path.join(
-    __dirname,
-    '..',
-    'client',
-    'build',
-    'uploads'
-  )}/${file.name}`;
-
-  console.log(filePath);
-
-  file.mv(filePath, (err) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).send(err);
-    }
-
-    res.status(201).json({
-      success: true,
-      data: { filename: file.name, filePath: filePath },
-    });
-  });
-});
-
 // @desc    Add a product
 // @route   POST /api/products
 // @access  Private/Admin

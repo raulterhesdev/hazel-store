@@ -20,8 +20,10 @@ import {
   ADD_REVIEW_START,
   ADD_REVIEW_SUCCESS,
   ADD_REVIEW_ERROR,
+  UPLOAD_IMAGE_ERROR,
 } from '../actionTypes';
 import { showMessage } from './uiActions';
+import firebase from '../../firebase';
 
 // Fetch Products
 export const fetchProducts = () => (dispatch) => {
@@ -40,7 +42,6 @@ export const fetchProducts = () => (dispatch) => {
       dispatch({ type: FETCH_PRODUCTS_SUCCESS, payload: res.data });
     })
     .catch((error) => {
-      console.log(error.response.data);
       dispatch(
         showMessage(
           true,
@@ -71,7 +72,6 @@ export const fetchReviews = () => (dispatch) => {
       dispatch({ type: FETCH_REVIEWS_SUCCESS, payload: res.data });
     })
     .catch((error) => {
-      console.log(error.response.data);
       dispatch(
         showMessage(
           true,
@@ -106,45 +106,58 @@ export const addProduct = ({ title, description, price, category, file }) => (
     config.headers['Authorization'] = `Bearer ${token}`;
   }
 
-  // upload file
-  const formData = new FormData();
-  formData.append('file', file); // appending file
+  // FIrebase
+  // Create a root reference
+  var storageRef = firebase.storage().ref();
 
-  axios
-    .post('/api/products/upload', formData, config)
-    .then((res) => {
-      dispatch({ type: UPLOAD_IMAGE_SUCCESS });
-      dispatch({ type: ADD_PRODUCT_START });
+  // Create a reference to 'mountains.jpg'
+  var imageRef = storageRef.child(file.name);
 
-      //request body
-      const body = JSON.stringify({
-        title,
-        description,
-        price,
-        category,
-        imageUrl: res.data.data.filePath,
-      });
+  // Create the file metadata
+  var metadata = {
+    contentType: 'image/jpeg',
+  };
 
-      axios
-        .post('/api/products', body, config)
-        .then((res) => {
-          dispatch({ type: ADD_PRODUCT_SUCCESS, payload: res.data });
-          dispatch(showMessage(false, 'Product added successfully!'));
-        })
-        .catch((error) => {
-          console.log(error.response.data);
-          dispatch(showMessage(true, error.response.data.error));
-          dispatch({
-            type: ADD_PRODUCT_ERROR,
-            payload: error.response.data.error,
-          });
-        });
-    })
-    .catch((error) => {
-      console.log(error.response.data);
+  // upload
+  var uploadTask = imageRef.put(file, metadata);
+
+  uploadTask.on(
+    firebase.storage.TaskEvent.STATE_CHANGED,
+    function (snapshot) {},
+    function (error) {
       dispatch(showMessage(true, 'Image could not be uploaded.'));
-      dispatch({ type: ADD_PRODUCT_ERROR, payload: error.response.data.error });
-    });
+      dispatch({ type: UPLOAD_IMAGE_ERROR, payload: error });
+    },
+    function () {
+      uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
+        dispatch({ type: UPLOAD_IMAGE_SUCCESS });
+        dispatch({ type: ADD_PRODUCT_START });
+
+        //request body
+        const body = JSON.stringify({
+          title,
+          description,
+          price,
+          category,
+          imageUrl: url,
+        });
+
+        axios
+          .post('/api/products', body, config)
+          .then((res) => {
+            dispatch({ type: ADD_PRODUCT_SUCCESS, payload: res.data });
+            dispatch(showMessage(false, 'Product added successfully!'));
+          })
+          .catch((error) => {
+            dispatch(showMessage(true, error.response.data.error));
+            dispatch({
+              type: ADD_PRODUCT_ERROR,
+              payload: error.response.data.error,
+            });
+          });
+      });
+    }
+  );
 };
 
 //edit product
@@ -157,9 +170,6 @@ export const editProduct = ({
   file,
   imageUrl,
 }) => (dispatch, getState) => {
-  // edit Start
-  dispatch({ type: EDIT_PRODUCT_START });
-
   // Headers
   const config = {
     headers: {
@@ -176,46 +186,59 @@ export const editProduct = ({
   let imagePath = imageUrl;
   // upload file
   if (file !== '') {
-    const formData = new FormData();
-    formData.append('file', file); // appending file
+    dispatch({ type: UPLOAD_IMAGE_START });
+    // FIrebase
+    // Create a root reference
+    var storageRef = firebase.storage().ref();
 
-    axios
-      .post('/api/products/upload', formData, config)
-      .then((res) => {
-        dispatch({ type: UPLOAD_IMAGE_SUCCESS });
-        imagePath = res.data.data.filePath;
+    // Create a reference to 'mountains.jpg'
+    var imageRef = storageRef.child(file.name);
 
-        //request body
-        const body = JSON.stringify({
-          title,
-          description,
-          price,
-          category,
-          imageUrl: imagePath,
-        });
-        axios
-          .put(`/api/products/${id}`, body, config)
-          .then((res) => {
-            dispatch(showMessage(false, 'Product edited successfully!'));
-            dispatch({ type: EDIT_PRODUCT_SUCCESS, payload: res.data });
-          })
-          .catch((error) => {
-            console.log(error.response.data);
-            dispatch(showMessage(true, error.response.data.error));
-            dispatch({
-              type: EDIT_PRODUCT_ERROR,
-              payload: error.response.data.error,
-            });
-          });
-      })
-      .catch((error) => {
-        console.log(error.response.data);
+    // Create the file metadata
+    var metadata = {
+      contentType: 'image/jpeg',
+    };
+
+    // upload
+    var uploadTask = imageRef.put(file, metadata);
+
+    uploadTask.on(
+      firebase.storage.TaskEvent.STATE_CHANGED,
+      function (snapshot) {},
+      function (error) {
         dispatch(showMessage(true, 'Image could not be uploaded.'));
-        dispatch({
-          type: EDIT_PRODUCT_ERROR,
-          payload: error.response.data.error,
+        dispatch({ type: UPLOAD_IMAGE_ERROR, payload: error });
+      },
+      function () {
+        uploadTask.snapshot.ref.getDownloadURL().then(function (url) {
+          dispatch({ type: UPLOAD_IMAGE_SUCCESS });
+          dispatch({ type: EDIT_PRODUCT_START });
+
+          //request body
+          const body = JSON.stringify({
+            title,
+            description,
+            price,
+            category,
+            imageUrl: url,
+          });
+
+          axios
+            .put(`/api/products/${id}`, body, config)
+            .then((res) => {
+              dispatch({ type: EDIT_PRODUCT_SUCCESS, payload: res.data });
+              dispatch(showMessage(false, 'Product added successfully!'));
+            })
+            .catch((error) => {
+              dispatch(showMessage(true, error.response.data.error));
+              dispatch({
+                type: EDIT_PRODUCT_ERROR,
+                payload: error.response.data.error,
+              });
+            });
         });
-      });
+      }
+    );
   } else {
     //request body
     const body = JSON.stringify({
@@ -232,7 +255,6 @@ export const editProduct = ({
         dispatch({ type: EDIT_PRODUCT_SUCCESS, payload: res.data });
       })
       .catch((error) => {
-        console.log(error.response.data);
         dispatch(showMessage(true, error.response.data.error));
         dispatch({
           type: EDIT_PRODUCT_ERROR,
@@ -266,7 +288,6 @@ export const deleteProduct = ({ id }) => (dispatch, getState) => {
       dispatch({ type: DELETE_PRODUCT_SUCCESS, payload: id });
     })
     .catch((error) => {
-      console.log(error.response.data);
       dispatch({
         type: DELETE_PRODUCT_ERROR,
         payload: error.response.data.error,
@@ -309,7 +330,6 @@ export const addReview = ({ title, text, rating, id }) => (
       dispatch(fetchProducts());
     })
     .catch((error) => {
-      console.log(error.response.data);
       dispatch(
         showMessage(true, 'Only one review/product allowed for each user.')
       );

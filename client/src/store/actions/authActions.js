@@ -137,7 +137,6 @@ export const updateUser = ({
       dispatch({ type: UPDATE_USER_SUCCESS, payload: res.data });
     })
     .catch((error) => {
-      console.log(error.response);
       dispatch(
         showMessage(true, 'There was an error. Please try again later.')
       );
@@ -151,6 +150,5 @@ export const logout = () => ({
 
 //try auto login user
 export const tryAutoLogin = () => (dispatch) => {
-  // console.log(localStorage.getItem('token'));
   dispatch(getLoggedUser());
 };
