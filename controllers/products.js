@@ -39,7 +39,7 @@ exports.uploadImage = asyncHandler(async (req, res, next) => {
     'client',
     'build',
     'uploads'
-  )}${file.name}`;
+  )}/${file.name}`;
 
   console.log(filePath);
 
