@@ -34,8 +34,8 @@ exports.uploadImage = asyncHandler(async (req, res, next) => {
   const file = req.files.file;
 
   const filePath = `${path.join(
-    __dirname,
-    '..',
+    // __dirname,
+    // '..',
     'client',
     'build',
     'uploads'
