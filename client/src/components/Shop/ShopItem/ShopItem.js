@@ -40,7 +40,7 @@ export class ShopItem extends Component {
     const { imageUrl, title, discount, price, rating } = this.props.product;
     return (
       <Card>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div></div>}>
           <Modal
             show={this.state.showModal}
             modalClosed={this.toggleModal}

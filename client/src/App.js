@@ -34,7 +34,7 @@ export class App extends Component {
       <div className='App'>
         <Header />
         <Navbar />
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div></div>}>
           <Switch>
             <Route
               path={routes.home.path}
