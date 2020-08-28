@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import firebase from '../../../firebase';
+
 import classes from './FileUpload.module.css';
 
 export class FileUpload extends Component {
