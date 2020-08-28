@@ -102,7 +102,13 @@
 @media (max-width: 600px) {
   .Image {
     max-height: 300px;
-    max-width: 90vw;
+    max-width: 70vw;
+  }
+
+  .Container {
+    grid-column: span 2;
+
+    margin: 0 auto;
   }
 
   .InformationContainer {

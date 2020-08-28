@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense, lazy } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -7,8 +7,8 @@ import Card from '../../UI/Card/Card';
 import classes from './ShopItem.module.css';
 import StarRating from '../../UI/StarRating/StarRating';
 import PrimaryButton from '../../UI/PrimaryButton/PrimaryButton';
-import Modal from '../../UI/Modal/Modal';
-import ShopDetails from '../ShopDetails/ShopDetails';
+// import Modal from '../../UI/Modal/Modal';
+// import ShopDetails from '../ShopDetails/ShopDetails';
 
 import { addToCart } from '../../../store/actions/cartActions';
 
@@ -35,23 +35,26 @@ export class ShopItem extends Component {
   };
 
   render() {
+    const Modal = lazy(() => import('../../UI/Modal/Modal'));
+    const ShopDetails = lazy(() => import('../ShopDetails/ShopDetails'));
     const { imageUrl, title, discount, price, rating } = this.props.product;
     return (
       <Card>
-        <Modal
-          show={this.state.showModal}
-          modalClosed={this.toggleModal}
-          fullScreen
-        >
-          <span className={classes.Close} onClick={this.toggleModal}>
-            &times;
-          </span>
-          <ShopDetails
-            product={this.props.product}
-            addToCart={this.addToCart}
-          />
-        </Modal>
-
+        <Suspense fallback={<div>Loading...</div>}>
+          <Modal
+            show={this.state.showModal}
+            modalClosed={this.toggleModal}
+            fullScreen
+          >
+            <span className={classes.Close} onClick={this.toggleModal}>
+              &times;
+            </span>
+            <ShopDetails
+              product={this.props.product}
+              addToCart={this.addToCart}
+            />
+          </Modal>
+        </Suspense>
         <div className={classes.ShopItem}>
           {discount > 0 ? (
             <span className={classes.Discount}>{discount}%</span>
