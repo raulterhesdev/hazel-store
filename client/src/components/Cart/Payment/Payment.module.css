@@ -14,3 +14,16 @@
   align-items: center;
   justify-content: center;
 }
+
+.Info {
+}
+
+.Info a {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+.Info a:hover {
+  color: var(--accent-dark);
+  text-decoration: underline;
+}

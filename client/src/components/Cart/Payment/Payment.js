@@ -80,6 +80,11 @@ const Payment = (props) => {
         }}
       />
       <p className={classes.Error}>{error}</p>
+      <p className={classes.Info}>
+        This is a test version. Your card won't be charged if you try it, but it
+        is hardly recommended by Stripe to user their test cards. You can find
+        them <a href='https://stripe.com/docs/testing'>here</a>.
+      </p>
       <div className={classes.Action}>
         {props.disableButton || isProcessing ? (
           <Spinner />
