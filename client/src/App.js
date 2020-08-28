@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, lazy, Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
@@ -9,9 +9,9 @@ import Shop from './components/Shop/Shop';
 import Footer from './components/Footer/Footer';
 import Showcase from './components/Showcase/Showcase';
 import Cart from './components/Cart/Cart';
-import Account from './components/Account/Account';
-import Admin from './components/Admin/Admin';
-import Auth from './components/Auth/Auth';
+// import Account from './components/Account/Account';
+// import Admin from './components/Admin/Admin';
+// import Auth from './components/Auth/Auth';
 import Message from './components/Message/Message';
 
 import { routes } from './constants/routes';
@@ -25,6 +25,10 @@ export class App extends Component {
   };
 
   render() {
+    const Admin = lazy(() => import('./components/Admin/Admin'));
+    const Auth = lazy(() => import('./components/Auth/Auth'));
+    const Account = lazy(() => import('./components/Account/Account'));
+
     return (
       <div className='App'>
         <Header />
@@ -46,20 +50,26 @@ export class App extends Component {
             component={Cart}
           />
           {this.props.isAuth ? (
-            <Route
-              path={routes.account.path}
-              exact={routes.account.exact}
-              component={Account}
-            />
+            <Suspense fallback={<div>Loading...</div>}>
+              <Route
+                path={routes.account.path}
+                exact={routes.account.exact}
+                component={Account}
+              />
+            </Suspense>
           ) : null}
           {this.props.role === 'admin' ? (
-            <Route
-              path={routes.admin.path}
-              exact={routes.admin.exact}
-              component={Admin}
-            />
+            <Suspense fallback={<div>Loading...</div>}>
+              <Route
+                path={routes.admin.path}
+                exact={routes.admin.exact}
+                component={Admin}
+              />
+            </Suspense>
           ) : null}
-          <Route path={'/auth'} exact component={Auth} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Route path={'/auth'} exact component={Auth} />
+          </Suspense>
           <Redirect to={routes.home.path} />
         </Switch>
         <Footer />
