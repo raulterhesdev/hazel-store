@@ -37,7 +37,7 @@
     "hpp": "^0.2.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.19",
-    "nodemailer": "^6.4.8",
+    "nodemailer": "^6.4.16",
     "slugify": "^1.4.0",
     "stripe": "^8.89.0",
     "xss-clean": "^0.1.1"
